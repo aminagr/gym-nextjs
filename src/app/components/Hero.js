@@ -1,11 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image'; 
 
 const Hero = () => {
   const images = [
-    '/images/fitness2.jpg',
-    '/images/fitness1.jpg',
+    { src: '/images/fitness2.jpg', alt: 'Hero Image 1' },
+    { src: '/images/fitness1.jpg', alt: 'Hero Image 2' },
   ];
 
   return (
@@ -18,7 +19,6 @@ const Hero = () => {
         transition={{ duration: 1 }}
       ></motion.div>
 
-
       <motion.div
         className="absolute inset-0 w-full h-full"
         initial={{ scale: 1.2 }}
@@ -26,11 +26,9 @@ const Hero = () => {
         transition={{ duration: 2 }}
       >
         {images.map((image, index) => (
-          <motion.img
+          <motion.div
             key={index}
-            src={image}
-            alt={`Hero ${index}`}
-            className="absolute w-full h-full object-cover"
+            className="absolute w-full h-full"
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
@@ -41,10 +39,18 @@ const Hero = () => {
                 repeatType: 'reverse',
               },
             }}
-          />
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              layout="fill"
+              objectFit="cover"
+              priority={index === 0} 
+              quality={75} 
+            />
+          </motion.div>
         ))}
       </motion.div>
-
 
       <motion.div
         className="relative z-20 text-center text-white space-y-6"

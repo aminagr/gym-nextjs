@@ -34,7 +34,7 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        <div className="text-xl font-bold text-yellow-400 tracking-widest">
+        <div className="text-xl font-bold text-yellow-400 tracking-widest px-6">
           <Link href="/">FITNESS CLUB</Link>
         </div>
 
